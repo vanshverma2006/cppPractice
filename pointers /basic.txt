@@ -1,0 +1,10 @@
+wild ptr ->
+when we declare  a ptr but dont intialise it 
+
+null ptr ->
+if we just wanna declare a ptr but don't wanna intialise it now we can make a null ptr 
+
+dangling ptr ->
+ ptr pointing on a var which do not exist 
+
+
