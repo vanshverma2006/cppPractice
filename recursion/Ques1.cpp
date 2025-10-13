@@ -1,19 +1,46 @@
 #include <iostream>
 #include <vector>
-class recursion{
+class patterns{
     public:
     void printStar(int n){
         if(n==0) return;
         std::cout<<"*";
         return printStar(n-1);
     }
-    void printPattern(int n,int rows){
-        if (rows<=0) return;
+    void triangle(int n){
+        if (n<=0) return;
+        triangle(n-1);
         printStar(n);
         std::cout<<std::endl;
-        printPattern(n,rows-1);
+    }
+    
+    void invertedTriangle(int n){
+        if (n<=0) return;
+        printStar(n);
+        std::cout<<std::endl;
+        triangle(n-1);
+    }
+
+    void rectangle(int col,int rows){
+        if (rows<=0) return;
+        printStar(col);
+        std::cout<<std::endl;
+        rectangle(col,rows-1);
 
     }
+    
+
+
+};
+
+class ques{
+    public:
+    void palindrome(int n){
+        if(n==0) return;
+        int p=p*10+n%10;
+        palindrome(n/10);
+    }
+    
 };
 
 std::vector<std::vector<int>> display(std::vector<std::vector<int>> v) {
@@ -50,8 +77,8 @@ int arrSum(int arr[],int n){
     return sum+arrSum(arr,n-1);
 }
 int main() {
-    recursion r;
-    r.printPattern(5,5);
+    patterns p;
+
 
     return 0;
 }

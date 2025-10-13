@@ -1,41 +1,30 @@
 #include <iostream>
 #include <unordered_map>
-using namespace std;
+#include<map>
+#include<vector>
 
-int firstUniqueChar(string s) {
-    unordered_map<char, int> freq;
-
-    // Count frequency of each character
-    for (char c : s) {
-        freq[c]++;
+int main(){
+    // always in sorted order
+    // std::map<std::string,int> m;
+    // m["a"]=1;
+    // m["b"]=2;
+    // for(auto i:m){
+    //     std::cout<<i.first<<" "<<i.second;
+    // }
+    // std::unordered_map<std::string,int> u;
+    // u["a"]=1;
+    // u["b"]=2;
+    // for(auto i:u){
+    //     std::cout<<i.first;
+    // }
+    std::vector<int> v={1,1,1,1,12,2,4,5,5,6,7,8};
+    std::map<int,int> freq;
+    for(auto i:v){
+        freq[i]++;
     }
-
-    // Find first character with frequency 1
-    for (int i = 0; i < s.size(); i++) {
-        if (freq[s[i]] == 1) {
-            return i;
-        }
+    for(auto i:freq){
+        std::cout<<i.first<<" "<<i.second<<std::endl;
     }
-
-    return -1;
-}
-bool anagram(string s1,string s2){
-        unordered_map<char,int> f1;
-        unordered_map<char,int> f2;
-        for (int c:s1){
-            f1[c]++;
-        }
-        for (int c:s2){
-            f2[c]++;
-        }
-}
-
-int main() {
-    string s;
-    cin >> s;
-
-    int result = firstUniqueChar(s);
-    cout << result << endl;
 
     return 0;
 }
