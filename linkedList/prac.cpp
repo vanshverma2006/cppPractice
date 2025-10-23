@@ -5,66 +5,102 @@ class Node{
     Node* next;
     Node(int data_v=0):data(data_v){next=nullptr;}
 };
-class myList{
+class list{
     public:
     Node* head;
-    myList(){
-        head=nullptr;
+    list(){head=nullptr;}
+    void push_back(int value){
+        Node* newVal=new Node(value);
+        if(head==nullptr) head=newVal;
+        else{
+            Node* temp=head;
+            while(temp->next!=nullptr){
+                temp=temp->next;
+            }
+            temp->next=newVal;
+
+        }
     }
-    void add(int val){
-        Node* newNode=new Node(val);
-        if(head==nullptr){
-            head=newNode;
-            return;
+    void push_front(int value){
+        Node* newVal=new Node(value);
+        if(head==nullptr) head=newVal;
+        else{
+            newVal->next=head;
+            head=newVal;
         }
+    }
+    void pop_back(){
         Node* temp=head;
-        while(temp->next!=nullptr){
+        while(temp->next!=nullptr)temp=temp->next;
+        delete temp;
+    }
+    void traverse(){
+        Node* temp=head;
+        while(temp!=nullptr){
+            std::cout<<temp->data<<"->";
             temp=temp->next;
+
         }
-        temp->next=newNode;
-        temp=newNode;
+        std::cout<<"NULL"<<std::endl;
 
     }
     void countNodes(){
         int count=0;
-        if(head!=nullptr){
+        if(head==nullptr){
+        std::cout<<count;
+        return;
+        }
         Node* temp=head;
         while(temp!=nullptr){
-            temp=temp->next;
             count++;
+            temp=temp->next;
         }
-        }
-
-        std::cout<<"nodes : "<<count<<std::endl;
+        std::cout<<"No. of nodes : "<<count<<std::endl;
     }
-    void search(int val){
-        if(head!=nullptr){
-            Node* temp=head;
-            while(temp!=nullptr){
-                if(temp->data==val){
-                    std::cout<<"found";
-                    return;
-                }
-                temp=temp->next;
-            }
-            std::cout<<"not present";
+    void sumOfEl(){
+        int sum=0;
+        Node* temp=head;
+        while (temp!=nullptr)
+        {
+            sum+=temp->data;
+            temp=temp->next;
         }
-
-    else{
-        std::cout<<"list is empty";
+        std::cout<<"sum of all elements : "<<sum<<std::endl;
     }
+    void minMax(){
+        Node* temp=head;
+        int largest=temp->data,least=temp->data;
+        while(temp->next!=nullptr){
+            temp=temp->next;
+            if(largest<temp->data) largest=temp->data;
+            if(least>temp->data) least=temp->data;
+        }
+        std::cout<<"largest : "<<largest<<" least : "<<least<<std::endl;
+
+    }
+    void ins(int position,int value){
+        Node* newVal=new Node(value);
+        Node* temp=head;
+        for(int i=0;i<position;i++)temp=temp->next;
+        newVal->next=temp;
+        temp=newVal;
+
     }
 };
 int main(){
-    myList l;
-    // l.add(1);
-    // l.add(2);
-    // l.add(3);
-    // l.add(4);
-    // l.add(5);
-    // l.add(6);
-    // l.countNodes();
-    l.search(2);
+    list l;
+    l.push_back(1);
+    l.push_back(2);
+    l.push_front(3);
+    l.push_front(4);
+    l.ins(2,10);
+    l.traverse();
+    l.countNodes();
+    l.sumOfEl();
+    l.minMax();
+    
+    
+
 
     return 0;
 }

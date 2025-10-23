@@ -6,8 +6,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "/Users/vanshverma/c++",
-      "program": "/Users/vanshverma/c++/build/Debug/outDebug"
+      "cwd": "/Users/vanshverma/c++/linkedList",
+      "program": "/Users/vanshverma/c++/linkedList/build/Debug/outDebug"
     }
   ]
 }
