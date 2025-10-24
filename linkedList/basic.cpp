@@ -59,22 +59,41 @@ class LinkedList{
         delete temp;
         tail->next=nullptr;
     }
+   
 };
+//first approach 
+ bool palindrome(LinkedList l){
+        if(l.head->data!=l.tail->data)return false;
+        if(l.head==l.tail|| l.head->next == l.tail) return true;
+        l.head=l.head->next;
+        Node* temp=l.head;
+        while(temp->next!=l.tail)temp=temp->next;
+        l.tail=temp;
+        return palindrome(l);
+    }
 int main(){
     LinkedList l1;
+    // l1.push_back(1);
+    // l1.push_back(2);
+    // l1.push_back(3);
+    // l1.push_front(1);
+    // l1.push_front(2);
+    // l1.push_front(3);
+    // l1.pop_front();
+    // l1.pop_back();
+    // Node* temp=l1.head;
+    // while(temp!=nullptr){
+    //     std::cout<<temp->data<<" ";
+    //     temp=temp->next;
+    // }
     l1.push_back(1);
     l1.push_back(2);
-    l1.push_back(3);
-    l1.push_front(1);
-    l1.push_front(2);
-    l1.push_front(3);
-    l1.pop_front();
-    l1.pop_back();
-    Node* temp=l1.head;
-    while(temp!=nullptr){
-        std::cout<<temp->data<<" ";
-        temp=temp->next;
-    }
+    l1.push_back(1);
+    l1.push_back(13);
+    l1.push_back(14);
 
+    l1.push_back(2);
+    l1.push_back(1);
+    std::cout<<palindrome(l1);
     return 0;
 }

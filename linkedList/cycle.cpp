@@ -65,6 +65,7 @@ class list{
         return slow; // or fast 
         //slow and fast now pointing at a node from where loop starts;
     }
+    
 };
 int main(){
     list l1;

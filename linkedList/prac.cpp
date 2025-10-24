@@ -87,6 +87,7 @@ class list{
 
     }
 };
+ 
 int main(){
     list l;
     l.push_back(1);
