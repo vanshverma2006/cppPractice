@@ -1,3 +1,6 @@
+// bas prev pointer aa jata hai isme 
+//now we can access both next and prev pointer of node. 
+
 #include<iostream>
 class Node{
     public:
@@ -75,16 +78,30 @@ class doublyList{
         delete head->prev;
         head->prev=nullptr;
     }
+    bool sorted(Node* head){
+        if (head==nullptr||head->next==nullptr) return true;
+        bool isSorted=false;
+        Node* temp=head->next;
+        while(temp->next!=nullptr){
+            if((temp->data>temp->next->data&&temp->data<temp->prev->data)||
+            (temp->data<temp->next->data&&temp->data>temp->prev->data)
+            )isSorted=true;
+            else isSorted=false;
+            temp=temp->next;
+        }
+        return isSorted;
+    }
 };
+
 int main(){
     doublyList d;
-    d.push_front(1);
-    d.push_front(2);
-    d.push_front(3);
     d.push_back(1);
     d.push_back(2);
-    d.pop_back();
-    d.traverse();
-    d.traverse_reverse();
+    d.push_back(4);
+    d.push_back(3);
+    d.push_back(5);
+    std::cout<<d.sorted(d.head);
+   
+   
     return 0;
 }
